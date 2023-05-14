@@ -1,0 +1,265 @@
+body {
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing: 0.5px;
+    
+}
+
+header{
+    background-color: black;
+     color: white;
+     flex-direction: row;
+     align-items: center; 
+ }
+
+ span{
+    color: white;
+}
+.nav-link{
+    color: white;
+    letter-spacing: 0.5px;
+    
+    
+}
+
+.nav-link:hover{
+color: white;
+}
+
+.nav-item:hover{
+text-decoration:  underline;
+padding-top: 4px;
+
+
+}
+
+.bt1{
+    color: white;
+    box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
+    gap: 5px;
+    border: 1px solid #dadada;
+    border-radius: 4px;
+    background-color: #000;
+    
+}
+
+.bt1:hover {
+    transform: scale(1.05);
+    background-color: white;
+    color: black;
+    padding-left: 15px;
+    padding-right: 15px;
+    cursor: pointer;
+}
+
+
+.containerLog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background-color: #e2e2e2;
+}
+
+.formLogin {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 7px;
+    padding: 40px;
+    box-shadow: 10px 10px 40px rgba(48, 45, 45, 0.4);
+    gap: 5px
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+
+.formLogin h1 {
+    padding: 0;
+    margin: 0;
+    font-weight: 500;
+    font-size: 2.3em;
+}
+
+.formLogin p {
+    display: inline-block;
+    font-size: 14px;
+    color: #000;
+    margin-bottom: 25px;
+}
+
+.formLogin input {
+    padding: 15px;
+    font-size: 14px;
+    border: 1px solid #000;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    border-radius: 4px;
+    transition: all linear 160ms;
+    outline: none;
+}
+
+
+.formLogin input:focus {
+    border: 1px solid #000000;
+}
+
+.formLogin label {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.formLogin a {
+    display: inline-block;
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: #000;
+    transition: all linear 160ms;
+}
+
+.formLogin a:hover {
+    color: #cf0606;
+}
+
+.bt1 {
+    background-color: #27475D;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    border: none !important;
+    transition: all linear 160ms;
+    cursor: pointer;
+    margin: 0 !important;
+
+}
+
+.bt1:hover {
+    transform: scale(1.05);
+    background-color: #325e7b;
+
+}
+
+.opcoes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* Cadastro */
+
+.sign-up-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background: rgb(226, 226, 226);
+    
+}
+
+.message-error {
+    border-radius: 7px;
+    background-color: #f58f8f;
+    color: #000;
+    position: absolute;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    padding: 0.5rem;
+    right: 1rem;
+    top: 1rem;
+    box-shadow: 5px 10px 18px #888888;
+    font-size: 14px;
+}
+
+.sign-up-form {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 7px;
+    padding: 20px;
+    box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
+   
+}
+
+.sign-up-form h1 {
+    padding: 0;
+    margin: 0;
+    font-weight: 500;
+    font-size: 2em;
+}
+
+.sign-up-form p {
+    display: inline-block;
+    font-size: 14px;
+    color: #000;
+    margin-bottom: 25px;
+}
+
+.sign-up-form input, .sign-up-button {
+    padding: 15px;
+    font-size: 14px;
+    border: 1px solid #000;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    border-radius: 4px;
+    transition: all linear 160ms;
+    outline: none;
+}
+
+
+.sign-up-form input:focus {
+    border: 1px solid #000;
+}
+
+.sign-up-form label {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.sign-up-form a {
+    display: inline-block;
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: #000;
+    transition: all linear 160ms;
+}
+
+.sign-up-form a:hover {
+    color: #cf0606;
+}
+.sign-up-button {
+    background-color: #27475D;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    border: none !important;
+    transition: all linear 160ms;
+    cursor: pointer;
+    margin: 0 !important;
+
+}
+
+.sign-up-button:hover {
+    transform: scale(1.05);
+    background-color: #325e7b;
+
+}
+
+.sign-up-form > .-invalid {
+    border: 1px solid #cf0606;
+}
