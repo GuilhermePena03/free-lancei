@@ -1,42 +1,149 @@
 <!DOCTYPE html>
 <html lang="PT-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Link com o bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-        crossorigin="anonymous"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+      crossorigin="anonymous"
+    ></script>
     <title>FREELANCEI|| LOGIN</title>
     <!-- link com o css -->
-    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/login.css" />
     <script src="./js/cadastro/cadastro.js"></script>
-</head>
+    <!-- link com o firebase-->
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous"
+    ></script>
+    <script type="module">
+      import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js'
+      import { getAuth, signInWithCustomToken, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js";
+      import { getDatabase, set, ref } from 'https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js'
+      
 
-<body>
-    <div class="message-error">
-    </div>
+      const firebaseConfig = {
+        authDomain: "freelancei.firebaseapp.com",
+        databaseURL: "https://freelancei-default-rtdb.firebaseio.com",
+        projectId: "freelancei",
+        storageBucket: "freelancei.appspot.com",
+        messagingSenderId: "218400094975",
+        appId: "1:218400094975:web:4bacda5052dc59b1562aca",
+        measurementId: "G-PJLK9MWNJC",
+        apiKey: "AIzaSyBu8nRLR8oG0JiRJNH3PQ3Tvf3l3-CtbxE",
+      };
+      //firebase.initializeApp(firebaseConfig);
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth();
+
+      const database = getDatabase(app);
+
+      $(document).ready(function () {
+        $("#signUpButton").on("click", function () {
+          const userName = $("#user");
+          const userEmail = $("#email");
+          const userPassword = $("#password");
+          const userPasswordConfirmation = $("#password-confirmation");
+
+          formValidate(
+            userName,
+            userEmail,
+            userPassword,
+            userPasswordConfirmation
+          );
+
+          const form = {
+            name: userName.val(),
+            email: userEmail.val(),
+            password: userPassword.val(),
+          };
+
+          createUserWithEmailAndPassword(auth, form.email, form.password)
+          .then((userCredential) => {
+            const user = userCredential.user;
+
+            console.log(user);
+          }).catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+          });
+
+          set(ref(database, "users/" + user.uid), {
+            email: form.email,
+            password: form.password
+          })
+          alert("dia");
+        });
+
+        function formValidate(
+          userName,
+          userEmail,
+          userPassword,
+          userPasswordConfirmation
+        ) {
+          // const toolTip = document.querySelector(".message-error");
+          // // if (userPassword.value !== userPasswordConfirmation.value) {
+          // //   [userPassword, userPasswordConfirmation].forEach((element) => {
+          // //     element.classList.add("-invalid");
+          // //   });
+          // //   toolTip.innerHTML = "As senhas não coincidem";
+          // //   toolTip.style.display = "flex";
+          // //   return;
+          // // }
+          // // [userPassword, userPasswordConfirmation].forEach((element) => {
+          // //   element.classList.remove("-invalid");
+          // // });
+          // toolTip.style.display = "none";
+        }
+      });
+    </script>
+  </head>
+
+  <body>
+    <div class="message-error"></div>
     <div class="sign-up-container">
-        <form method="POST" class="sign-up-form">
-            <div class="top">
-                <img src="./assets/logo 1.png" alt="" class="w-25 text-center">
-                <h1 class="text-center">Cadastro</h1>
-            </div>
-            <p>Digite os seus dados de acesso no campo abaixo.</p>
-            <label for="user">Usuario</label>
-            <input id="user" type="text" placeholder="Digite seu nome de usuario" autofocus="true" />
-            <label for="email">E-mail</label>
-            <input id="email" type="email" placeholder="Digite seu e-mail" autocomplete="on"/>
-            <label for="password">Senha</label>
-            <input id="password" type="password" placeholder="Digite sua senha" />
-            <label for="password-confirmation">Confirmar Senha</label>
-            <input id="password-confirmation" type="password" placeholder="Confirme a senha" />
-            <div value="Cadastre-se" class="sign-up-button">Cadastre-se</div>
-        </form>
+      <form method="POST" class="sign-up-form">
+        <div class="top">
+          <img src="./assets/logo 1.png" alt="" class="w-25 text-center" />
+          <h1 class="text-center">Cadastro</h1>
+        </div>
+        <p>Digite os seus dados de acesso no campo abaixo.</p>
+        <label for="user">Usuario</label>
+        <input
+          id="user"
+          type="text"
+          placeholder="Digite seu nome de usuario"
+          autofocus="true"
+        />
+        <label for="email">E-mail</label>
+        <input
+          id="email"
+          type="email"
+          placeholder="Digite seu e-mail"
+          autocomplete="on"
+        />
+        <label for="password">Senha</label>
+        <input id="password" type="password" placeholder="Digite sua senha" />
+        <label for="password-confirmation">Confirmar Senha</label>
+        <input
+          id="password-confirmation"
+          type="password"
+          placeholder="Confirme a senha"
+        />
+        <div value="Cadastre-se" class="sign-up-button" id="signUpButton">
+          Cadastre-se
+        </div>
+      </form>
     </div>
-</body>
+  </body>
 </html>
