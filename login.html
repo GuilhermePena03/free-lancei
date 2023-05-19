@@ -25,35 +25,6 @@
       crossorigin="anonymous"
     ></script>
     <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
-      import {
-        getAuth,
-        signInWithCustomToken,
-        signInWithEmailAndPassword,
-      } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js";
-      import {
-        getDatabase,
-        set,
-        ref,
-      } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
-
-      const firebaseConfig = {
-        authDomain: "freelancei.firebaseapp.com",
-        databaseURL: "https://freelancei-default-rtdb.firebaseio.com",
-        projectId: "freelancei",
-        storageBucket: "freelancei.appspot.com",
-        messagingSenderId: "218400094975",
-        appId: "1:218400094975:web:4bacda5052dc59b1562aca",
-        measurementId: "G-PJLK9MWNJC",
-        apiKey: "AIzaSyBu8nRLR8oG0JiRJNH3PQ3Tvf3l3-CtbxE",
-      };
-      //firebase.initializeApp(firebaseConfig);
-      const app = initializeApp(firebaseConfig);
-      const auth = getAuth();
-      auth.settings.appVerificationDisabledForTesting = true;
-
-      const database = getDatabase(app);
-
       $(document).ready(function () {
         $("#login-button").on("click", function () {
           const userEmail = $("#login-email");
@@ -63,13 +34,6 @@
             email: userEmail.val(),
             password: userPassword.val(),
           };
-
-          signInWithEmailAndPassword(form.userEmail, form.userPassword).then(
-            (userCredential) => {
-              const user = userCredential.user;
-              console.log(user);
-            }
-          );
         });
       });
     </script>

@@ -109,6 +109,7 @@ span {
 .formLogin label {
   font-size: 14px;
   font-weight: 600;
+  color: #000;
 }
 
 .formLogin a {
@@ -195,7 +196,7 @@ span {
   display: inline-block;
   font-size: 14px;
   color: #000;
-  margin-bottom: 25px;
+  margin-bottom: 0px;
 }
 
 .sign-up-form input,
@@ -210,13 +211,25 @@ span {
   outline: none;
 }
 
+.sign-up-form input {
+  margin-bottom: 0px;
+}
+
+.sign-up-form span {
+  font-size: 10px;
+  color: #cf0606;
+  display: none;
+}
+
 .sign-up-form input:focus {
   border: 1px solid #000;
 }
 
 .sign-up-form label {
+  margin-top: 20px;
   font-size: 14px;
   font-weight: 600;
+  color: #000;
 }
 
 .sign-up-form a {
@@ -239,6 +252,7 @@ span {
   transition: all linear 160ms;
   cursor: pointer;
   margin: 0 !important;
+  margin-top: 25px !important;
 }
 
 .sign-up-button:hover {
@@ -248,4 +262,8 @@ span {
 
 .sign-up-form > .-invalid {
   border: 1px solid #cf0606;
+}
+
+.sign-up-form .-show-span {
+  display: block;
 }
